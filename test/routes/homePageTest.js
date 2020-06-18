@@ -26,6 +26,7 @@ describe('authorRouter', () => {
             // then
             expect(response).to.be.html
             expect(response.text).to.contain('Un message sympa')
+            expect(response.text).to.contain('See users')
             })
         })
     })
