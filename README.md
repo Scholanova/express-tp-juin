@@ -3,7 +3,7 @@
 Nom des membres de la team :
  - YELES NACER
  - BEMATOL FLORIAN
- - XXXXXXX XXXXXXX
+ - VO DAVID
  - XXXXXXX XXXXXXX
 
 ## CONSIGNES GÉNÉRALES  
