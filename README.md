@@ -3,7 +3,7 @@
 Nom des membres de la team :
  - Djibril Diop
  - Noblesse Kasa
- - XXXXXXX XXXXXXX
+ - Elimane Sene
  - XXXXXXX XXXXXXX
 
 ## CONSIGNES GÉNÉRALES  
