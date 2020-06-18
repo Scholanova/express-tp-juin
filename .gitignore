@@ -66,6 +66,3 @@ typings/
 
 # system
 .DS_Store
-
-# Config
-**/config
