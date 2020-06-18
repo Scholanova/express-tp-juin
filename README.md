@@ -1,8 +1,8 @@
 # PROJET EXPRESS NODE.JS JUIN
 
 Nom des membres de la team :
- - XXXXXXX XXXXXXX
- - XXXXXXX XXXXXXX
+ - Djibril Diop
+ - Noblesse Kasa
  - XXXXXXX XXXXXXX
  - XXXXXXX XXXXXXX
 
