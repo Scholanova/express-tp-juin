@@ -4,7 +4,7 @@ Nom des membres de la team :
  - YELES NACER
  - BEMATOL FLORIAN
  - VO DAVID
- - XXXXXXX XXXXXXX
+ - FOFANA DAOUDA
 
 ## CONSIGNES GÉNÉRALES  
 Le projet correspondant aux cours du 18 et 19 juin 2020. 
