@@ -5,6 +5,7 @@ Nom des membres de la team :
  - Noblesse Kasa
  - XXXXXXX XXXXXXX
  - XXXXXXX XXXXXXX
+ - XXXXXXX XXXXXXX
 
 ## CONSIGNES GÉNÉRALES  
 Le projet correspondant aux cours du 18 et 19 juin 2020. 
