@@ -1,10 +1,10 @@
 # PROJET EXPRESS NODE.JS JUIN
 
 Nom des membres de la team :
- - XXXXXXX XXXXXXX
- - XXXXXXX XXXXXXX
- - XXXXXXX XXXXXXX
- - XXXXXXX XXXXXXX
+ - YELES NACER
+ - BEMATOL FLORIAN
+ - VO DAVID
+ - FOFANA DAOUDA
 
 ## CONSIGNES GÉNÉRALES  
 Le projet correspondant aux cours du 18 et 19 juin 2020. 
