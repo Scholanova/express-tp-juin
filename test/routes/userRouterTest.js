@@ -45,7 +45,7 @@ describe('userRouter', () => {
       beforeEach(async () => {
         // given
         user = ({
-            name: 'Jean-Jacques Rousseau',
+            nom: 'Jean-Jacques Rousseau',
             password: 'pala',
             pseudo: 'Bonsoir',
         })
@@ -64,35 +64,7 @@ describe('userRouter', () => {
       it('should return an html list with user info inside', () => {
         // then
         expect(response).to.be.html
-        expect(response.text).to.contain(`${user.name} (${user.pseudo})`)
-      })
-    })
-
-    context('when there are users in the repository', () => {
-
-      let user
-      beforeEach(async () => {
-        // given
-        user = ({
-            name: 'Jean-Jacques Rousseau',
-            password: 'pala',
-            pseudo: 'Bonsoir',
-        })
-        userRepository.listAll.resolves([user])
-
-        // when
-        response = await request(app).get('/users')
-      })
-
-      it('should succeed with a status 200', () => {
-        // then
-        expect(response).to.have.status(200)
-      })
-
-      it('should return an html list with user info inside', () => {
-        // then
-        expect(response).to.be.html
-        expect(response.text).to.contain(`${user.name}`)
+        expect(response.text).to.contain(`${user.nom} (${user.pseudo})`)
       })
     })
   })
@@ -190,6 +162,82 @@ describe('userRouter', () => {
         expect(userService.create).to.have.been.calledWith({
             'pseudo': undefined, 'password': userPassword, 'nom': userName
         })
+
+        it('should succeed with a status 200', () => {
+            // then
+            expect(response).to.have.status(200)
+          })
+
+        it('should show new user page with error message and previous values', () => {
+        // then
+        expect(response).to.be.html
+        expect(response.text).to.contain('New User')
+        expect(response.text).to.contain('&#34;pseudo&#34; is required')
+        expect(response.text).to.contain(userPassword)
+        expect(response.text).to.contain(userName)
+        })
+    })
+    })
+})
+
+  describe('show', () => {
+
+    let userId
+    let response
+
+    beforeEach(() => {
+      sinon.stub(userRepository, 'get')
+    })
+
+    context('when there is no user matching in the repository', () => {
+
+      beforeEach(async () => {
+        // given
+        userId = '123'
+        userRepository.get.rejects(new ResourceNotFoundError())
+
+        // when
+        response = await request(app).get(`/users/${userId}`)
+      })
+
+      it('should call the user repository with id', () => {
+        // then
+        expect(userRepository.get).to.have.been.calledWith(userId)
+      })
+
+      it('should succeed with a status 404', () => {
+        // then
+        expect(response).to.have.status(404)
+      })
+
+      it('should return the resource not found page', () => {
+        // then
+        expect(response).to.be.html
+        expect(response.text).to.contain('You have gone too deep')
+      })
+    })
+
+    context('when there is a user matching in the repository', () => {
+
+      let user
+
+      beforeEach(async () => {
+        // given
+        userId = '123'
+        user = ({
+            nom: 'Jean-Jacques Rousseau',
+            pseudo: 'Bonsoir',
+        })
+
+        userRepository.get.resolves(user)
+
+        // when
+        response = await request(app).get(`/users/${userId}`)
+      })
+
+      it('should call the user repository with id', () => {
+        // then
+        expect(userRepository.get).to.have.been.calledWith(userId)
       })
 
       it('should succeed with a status 200', () => {
@@ -197,14 +245,13 @@ describe('userRouter', () => {
         expect(response).to.have.status(200)
       })
 
-      it('should show new user page with error message and previous values', () => {
+      it('should return the show page with the user’s info', () => {
         // then
         expect(response).to.be.html
-        expect(response.text).to.contain('New User')
-        expect(response.text).to.contain('&#34;pseudo&#34; is required')
-        expect(response.text).to.contain(userPassword)
-        expect(response.text).to.contain(userName)
+        expect(response.text).to.contain(`Nom: ${user.nom}`)
+        expect(response.text).to.contain(`Pseudo: ${user.pseudo}`)
       })
+
     })
-  })
+    })
 })

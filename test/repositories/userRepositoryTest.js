@@ -42,6 +42,27 @@ describe('userRepository', () => {
 
 
       
+    describe('get', () => {
+
+        let notExistingId
+        let getUserPromise
+    
+        context('user does not exist', () => {
+          beforeEach(async () => {
+            // given
+            notExistingId = 23456789
+    
+            // when
+            getUserPromise = userRepository.get(notExistingId)
+          })
+    
+          it('should throw a not found error', () => {
+            // then
+            return expect(getUserPromise).to.eventually.be.rejectedWith(ResourceNotFoundError)
+          })
+        })
+      })
+  
     describe('listAll', () => {
         let result
 
@@ -60,7 +81,7 @@ describe('userRepository', () => {
             })
         })
 
-        context.skip('when there are two users in the repository', () => {
+        context('when there are two users in the repository', () => {
 
         let user1
         let user2
