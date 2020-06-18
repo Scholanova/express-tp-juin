@@ -7,14 +7,14 @@ const userService = require('../../lib/services/userService')
 const models = require('../../lib/models')
 const User = models.User
 
-describe('userRouter', () => {
+describe('userRouterDelete', () => {
 
-  describe('list', () => {
+  describe('delete', () => {
 
     let response
 
     beforeEach(() => {
-      sinon.stub(userRepository, 'listAll')
+      sinon.stub(userRepository, 'deleteById')
     })
 
     context('when there is no users in the repository', () => {
