@@ -1,10 +1,10 @@
 # PROJET EXPRESS NODE.JS JUIN
 
 Nom des membres de la team :
- - XXXXXXX Nico
- - XXXXXXX Livio
- - XXXXXXX Aurélien
- - XXXXXXX Loïc
+ -  Nico
+ -  Livio
+ -  Aurélien
+ -  Loïc
 
 ## CONSIGNES GÉNÉRALES  
 Le projet correspondant aux cours du 18 et 19 juin 2020. 
