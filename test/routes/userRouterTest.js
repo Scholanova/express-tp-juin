@@ -33,7 +33,7 @@ describe('UserRouter', () => {
         user = factory.createUser({
           pseudo: userPseudo,
           password: userPassword,
-          name: userName,
+          nom: userName,
         })
         userService.create.resolves(user)
 
@@ -41,7 +41,7 @@ describe('UserRouter', () => {
         response = await request(app)
           .post('/users/new')
           .type('form')
-          .send({ 'pseudo': userPseudo, 'password': userPassword, 'name': userName })
+          .send({ 'pseudo': userPseudo, 'password': userPassword, 'nom': userName })
           .redirects(0)
       })
 
@@ -50,7 +50,7 @@ describe('UserRouter', () => {
         expect(userService.create).to.have.been.calledWith({
             pseudo: userPseudo,
             password: userPassword,
-            name: userName,
+            nom: userName,
         })
       })
 
@@ -61,7 +61,7 @@ describe('UserRouter', () => {
 
       it('should redirect to index page', () => {
         // then
-        expect(response).to.redirectTo(`index`)
+        expect(response).to.redirectTo("/")
       })
     })
 
@@ -93,14 +93,14 @@ describe('UserRouter', () => {
         response = await request(app)
           .post('/users/new')
           .type('form')
-          .send({ 'pseudo': undefined, 'password': userPassword, 'name': userName })
+          .send({ 'pseudo': undefined, 'password': userPassword, 'nom': userName })
           .redirects(0)
       })
 
       it('should call the service with user data', () => {
         // then
         expect(userService.create).to.have.been.calledWith({
-            'pseudo': undefined, 'password': userPassword, 'name': userName
+            'pseudo': undefined, 'password': userPassword, 'nom': userName
         })
       })
 

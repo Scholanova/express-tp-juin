@@ -5,17 +5,17 @@ const factory = {
     createUserData: ({
         pseudo = 'Namelistone',
         password = 'admin123',
-        name = 'Benoit'
+        nom = 'Benoit'
       } = {}) => {
-        return { pseudo, password, name }
+        return { pseudo, password, nom }
       },
       createUser: ({
         id = 756,
         pseudo = 'Namelistone',
         password = 'admin123',
-        name = 'Benoit'
+        nom = 'Benoit'
       } = {}) => {
-        return new User({ id, pseudo, password,name })
+        return new User({ id, pseudo, password,nom })
       }
 }
 
