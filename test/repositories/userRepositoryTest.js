@@ -81,7 +81,7 @@ describe('userRepository', () => {
             })
         })
 
-        context.skip('when there are two users in the repository', () => {
+        context('when there are two users in the repository', () => {
 
         let user1
         let user2

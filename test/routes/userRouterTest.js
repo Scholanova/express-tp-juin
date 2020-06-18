@@ -45,7 +45,7 @@ describe('userRouter', () => {
       beforeEach(async () => {
         // given
         user = ({
-            name: 'Jean-Jacques Rousseau',
+            nom: 'Jean-Jacques Rousseau',
             password: 'pala',
             pseudo: 'Bonsoir',
         })
@@ -64,35 +64,7 @@ describe('userRouter', () => {
       it('should return an html list with user info inside', () => {
         // then
         expect(response).to.be.html
-        expect(response.text).to.contain(`${user.name} (${user.pseudo})`)
-      })
-    })
-
-    context('when there are users in the repository', () => {
-
-      let user
-      beforeEach(async () => {
-        // given
-        user = ({
-            name: 'Jean-Jacques Rousseau',
-            password: 'pala',
-            pseudo: 'Bonsoir',
-        })
-        userRepository.listAll.resolves([user])
-
-        // when
-        response = await request(app).get('/users')
-      })
-
-      it('should succeed with a status 200', () => {
-        // then
-        expect(response).to.have.status(200)
-      })
-
-      it('should return an html list with user info inside', () => {
-        // then
-        expect(response).to.be.html
-        expect(response.text).to.contain(`${user.name}`)
+        expect(response.text).to.contain(`${user.nom} (${user.pseudo})`)
       })
     })
   })
@@ -253,7 +225,7 @@ describe('userRouter', () => {
         // given
         userId = '123'
         user = ({
-            name: 'Jean-Jacques Rousseau',
+            nom: 'Jean-Jacques Rousseau',
             pseudo: 'Bonsoir',
         })
 
@@ -276,7 +248,7 @@ describe('userRouter', () => {
       it('should return the show page with the user’s info', () => {
         // then
         expect(response).to.be.html
-        expect(response.text).to.contain(`Nom: ${user.name}`)
+        expect(response.text).to.contain(`Nom: ${user.nom}`)
         expect(response.text).to.contain(`Pseudo: ${user.pseudo}`)
       })
 
