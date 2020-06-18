@@ -4,7 +4,7 @@ Nom des membres de la team :
  - Djibril Diop
  - Noblesse Kasa
  - Elimane Sene
- - XXXXXXX XXXXXXX
+ - Dieneba DIARRA
 
 ## CONSIGNES GÉNÉRALES  
 Le projet correspondant aux cours du 18 et 19 juin 2020. 
