@@ -12,7 +12,8 @@
     "db:reset": "npx sequelize db:drop && npm run db:init && npm run db:migrate",
     "db:test:init": "NODE_ENV=test npx sequelize db:create",
     "db:test:migrate": "NODE_ENV=test npx sequelize db:migrate",
-    "db:test:reset": "NODE_ENV=test npx sequelize db:drop && npm run db:test:init && npm run db:test:migrate"
+    "db:test:reset": "NODE_ENV=test npx sequelize db:drop && npm run db:test:init && npm run db:test:migrate",
+    "test:windows": "SET NODE_ENV=test&& mocha --recursive"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
