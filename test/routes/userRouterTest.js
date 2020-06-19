@@ -3,6 +3,7 @@ const { expect, request, sinon, factory } = require('../testHelper')
 const { ResourceNotFoundError } = require('../../lib/errors')
 const app = require('../../lib/app')
 const userRepository = require('../../lib/repositories/userRepository')
+const secretRepository = require('../../lib/repositories/secretRepository')
 const userService = require('../../lib/services/userService')
 const models = require('../../lib/models')
 const User = models.User
@@ -323,4 +324,85 @@ describe('userRouter', () => {
         })
       })
   })
+
+
+  describe('show secret', () => {
+
+    let userId
+    let secretId
+    let response
+    let secretData
+
+    beforeEach(() => {
+      sinon.stub(secretRepository, 'get')
+    })
+
+    context('when there is no secret matching in the repository', () => {
+
+      beforeEach(async () => {
+        // given
+        userId = 10101
+        secretId = 123
+        secretRepository.get.rejects(new ResourceNotFoundError())
+
+        // when
+        response = await (await request(app).get(`/users/${userId}/secrets/${secretId}`)
+                                            .set('Cookie', 'userId='+userId))
+      })
+
+      it('should call the secret repository with id', () => {
+        const secretIdExpected = "123"
+        // then
+        expect(secretRepository.get).to.have.been.calledWith(secretIdExpected)
+      })
+
+      it('should succeed with a status 404', () => {
+        // then
+        expect(response).to.have.status(404)
+      })
+
+      it('should return the resource not found page', () => {
+        // then
+        expect(response).to.be.html
+        expect(response.text).to.contain('You have gone too deep')
+      })
+    })
+
+    context('when there is a secret matching in the repository', () => {
+
+      beforeEach(async () => {
+        // given
+        userId = 10101
+        secretId = "123"
+        secretData = ({
+          description: 'La desc du secret',
+          content: 'content du secret',
+        })
+        secretRepository.get.resolves(secretData)
+
+        // when
+        response = await (await request(app).get(`/users/${userId}/secrets/${secretId}`)
+                                            .set('Cookie', 'userId='+userId))
+      })
+
+      it('should call the user repository with id', () => {
+        // then
+        expect(secretRepository.get).to.have.been.calledWith(secretId)
+      })
+
+      it('should succeed with a status 200', () => {
+        // then
+        expect(response).to.have.status(200)
+      })
+
+      it('should return the show page with the secret’s info', () => {
+        // then
+        expect(response).to.be.html
+        expect(response.text).to.contain(`Description: ${secretData.description}`)
+        expect(response.text).to.contain(`Secret: ${secretData.content}`)
+      })
+    })
+  })
+
+
 })
