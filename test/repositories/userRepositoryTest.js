@@ -116,4 +116,31 @@ describe('userRepository', () => {
         })
     })
 
+    describe('delete', () => {
+
+      let existingUser
+      let resultPromise
+  
+      beforeEach(async () => {
+        // given
+        const userData = factory.createUserData("LALALA","123","CYRYL")
+        existingUser = await userRepository.create(userData)
+        
+        // when
+        resultPromise = userRepository.deleteById(existingUser.id)
+      })
+  
+      // then
+      it('should succeed', () => {
+        const numberOfDelete = 1
+        return expect(resultPromise).to.eventually.equal(numberOfDelete)
+      })
+  
+      it('should delete the user', () => {
+        const getUserPromise = userRepository.get(existingUser.id)
+  
+        return expect(getUserPromise).to.eventually.be.rejectedWith(ResourceNotFoundError)
+      })
+    })
+
 })
