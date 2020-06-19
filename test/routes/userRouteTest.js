@@ -26,7 +26,7 @@ describe('userRouter', () => {
         userRepository.get.rejects(new ResourceNotFoundError())
 
         // when
-        response = await request(app).get(`/user/${userId}`)
+        response = await request(app).get(`/users/${userId}`)
       })
 
       it('should call the user repository with id', () => {
