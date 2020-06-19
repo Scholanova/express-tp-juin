@@ -6,13 +6,17 @@
     "start": "node ./bin/www",
     "start:dev": "nodemon ./bin/www",
     "test": "npm run db:test:migrate && NODE_ENV=test mocha --recursive",
+    "test:windows": "SET NODE_ENV=test&& mocha --recursive",
     "db:init": "npx sequelize db:create",
     "db:migrate": "npx sequelize db:migrate",
     "db:seed": "npx sequelize db:seed:all",
     "db:reset": "npx sequelize db:drop && npm run db:init && npm run db:migrate",
+    "db:test:init:windows": "set NODE_ENV=test&& npx sequelize db:create",
     "db:test:init": "NODE_ENV=test npx sequelize db:create",
     "db:test:migrate": "NODE_ENV=test npx sequelize db:migrate",
-    "db:test:reset": "NODE_ENV=test npx sequelize db:drop && npm run db:test:init && npm run db:test:migrate"
+    "db:test:migrate:windows": "set NODE_ENV=test&& npx sequelize db:migrate",
+    "db:test:reset": "NODE_ENV=test npx sequelize db:drop && npm run db:test:init && npm run db:test:migrate",
+    "db:test:reset:windows": "set NODE_ENV=test&& npx sequelize db:drop && npm run db:test:init && npm run db:test:migrate"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
@@ -20,6 +24,7 @@
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "express-ejs-layouts": "^2.5.0",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "pg": "^7.18.2",

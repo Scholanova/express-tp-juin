@@ -1,10 +1,10 @@
 # PROJET EXPRESS NODE.JS JUIN
 
 Nom des membres de la team :
- - XXXXXXX XXXXXXX
- - XXXXXXX XXXXXXX
- - XXXXXXX XXXXXXX
- - XXXXXXX XXXXXXX
+ -  Nico
+ -  Livio
+ -  Aurélien
+ -  Loïc
 
 ## CONSIGNES GÉNÉRALES  
 Le projet correspondant aux cours du 18 et 19 juin 2020. 
@@ -207,8 +207,8 @@ Cependant, il est possible de les faire au travers d'un peu de javascript, comme
 ```html
 <button onclick = "deleteAuthorById(<%= author.id %>)" %> > Delete </button>
 <script>
-function deleteAuthorById (authorId) {
-  fetch(`/authors/${authorId}`, { method: 'DELETE' })
+function deleteAuthorById (userId) {
+  fetch(`/authors/${userId}`, { method: 'DELETE' })
 }
 </script>
 ```
