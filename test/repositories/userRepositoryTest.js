@@ -8,13 +8,12 @@ const User = models.User
 describe('userRepository', () => {
 
   afterEach(async () => {
-    await Author.destroy({ where: {} })
+    await User.destroy({ where: {} })
   })
 
   describe('get', () => {
-
     let notExistingId
-    let getAuthorPromise
+    let getUserPromise
 
     context('user does not exist', () => {
       beforeEach(async () => {
@@ -24,10 +23,10 @@ describe('userRepository', () => {
         // when
         getUserPromise = userRepository.get(notExistingId)
       })
-
       it('should throw a not found error', () => {
         // then
         return expect(getUserPromise).to.eventually.be.rejectedWith(ResourceNotFoundError)
       })
     })
   })
+})

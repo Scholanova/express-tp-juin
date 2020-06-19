@@ -1,3 +1,12 @@
+const Joi = require('@hapi/joi')
+const { expect, request, sinon, factory } = require('../testHelper')
+const { ResourceNotFoundError } = require('../../lib/errors')
+const app = require('../../lib/app')
+const userRepository = require('../../lib/repositories/userRepository')
+
+const models = require('../../lib/models')
+const User = models.User
+
 describe('userRouter', () => {
   describe('show', () => {
 
