@@ -66,7 +66,6 @@ describe('userRouter', () => {
         // when
         response = await request(app)
         .delete(`/users/${userId}`)
-        .redirects(0)
       })
 
       it('should call the repo delete with user id', () => {
