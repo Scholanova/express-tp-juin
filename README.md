@@ -196,8 +196,8 @@ Cependant, il est possible de les faire au travers d'un peu de javascript, comme
 ```html
 <button onclick = "deleteAuthorById(<%= author.id %>)" %> > Delete </button>
 <script>
-function deleteAuthorById (authorId) {
-  fetch(`/authors/${authorId}`, { method: 'DELETE' })
+function deleteAuthorById (userId) {
+  fetch(`/authors/${userId}`, { method: 'DELETE' })
 }
 </script>
 ```
