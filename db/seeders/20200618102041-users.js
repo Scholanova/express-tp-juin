@@ -8,7 +8,7 @@ module.exports = {
           // Id 100001 pour avoir un id fixe pour mettre dans books
           // Mais fixer l'id en bulk insert ne modifie par l'auto-increment naturel de postgres
           // Pour qu'il n'y ait pas de conflit, l'id est mis à "très grand"
-          id: 100001,
+          id: 100003,
           pseudo : 'Moulin',
           password: 'UnPassW0rd',
           nom: 'Jean',
@@ -16,7 +16,7 @@ module.exports = {
           updatedAt: new Date('1778-07-02T03:56:00')
         },
         {
-          id: 100002,
+          id: 100004,
           pseudo : 'Sard',
           password: 'DeuxPassW0rd',
           nom: 'Paul',
