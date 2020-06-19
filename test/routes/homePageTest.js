@@ -34,6 +34,7 @@ describe('authorRouter', () => {
             expect(response).to.be.html
             expect(response.text).to.contain('Un message sympa')
             expect(response.text).to.contain('See users')
+            expect(response.text).to.not.contain("Se déconnecter")
             })
         })
 
@@ -65,10 +66,11 @@ describe('authorRouter', () => {
               expect(response).to.have.status(200)
             })
       
-            it('should return the show page with the user’s info', () => {
+            it('should return the show page with the user’s info + deconnexion button', () => {
               // then
               expect(response).to.be.html
               expect(response.text).to.contain(user.nom)
+              expect(response.text).to.contain("Se déconnecter")
             })
       
           })

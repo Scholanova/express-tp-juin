@@ -323,4 +323,34 @@ describe('userRouter', () => {
         })
       })
   })
+
+  describe('Deconnexion - GET', () => {
+
+    let response
+
+    context('when deconnexion, cookie is unset', () => {
+
+      let userId
+
+      beforeEach(async () => {
+        // when
+        response = await await request(app).get(`/users/deconnexion`).set('Cookie', 'userId=123').redirects(0)
+      })
+
+      it('should set a cookie', () => {
+        // then
+        expect(response.headers["set-cookie"][0]).to.not.contain('userId=123')
+      })
+
+      it('should succeed with a status 302', () => {
+        // then
+        expect(response).to.have.status(302)
+      })
+
+      it('should redirect to index page', () => {
+        // then
+        expect(response).to.redirectTo("/")
+      })
+    })
+})
 })
