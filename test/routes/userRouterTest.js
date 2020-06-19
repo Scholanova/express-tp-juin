@@ -287,4 +287,40 @@ describe('userRouter', () => {
       })
   
     }) 
+    describe('connexion - POST', () => {
+
+      let response
+
+      context('when connexion, cookie is set', () => {
+  
+        let userId
+  
+        beforeEach(async () => {
+          // given
+          userId = 1
+    
+          // when
+          response = await request(app)
+            .post('/users/connexion')
+            .type('form')
+            .send({ 'userId': userId })
+            .redirects(0)
+        })
+  
+        it('should set a cookie', () => {
+          // then
+          expect(response.headers["set-cookie"][0]).to.contain('userId=1')
+        })
+  
+        it('should succeed with a status 302', () => {
+          // then
+          expect(response).to.have.status(302)
+        })
+  
+        it('should redirect to index page', () => {
+          // then
+          expect(response).to.redirectTo("/")
+        })
+      })
+  })
 })
