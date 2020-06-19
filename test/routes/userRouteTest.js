@@ -5,7 +5,7 @@ const app = require('../../lib/app')
 
 const userRepository = require('../../lib/repositories/userRepository')
 const userService = require('../../lib/services/userService')
-
+const userRouter = require('../../lib/routes/userRouter')
 const models = require('../../lib/models')
 const User = models.User
 
@@ -36,12 +36,45 @@ describe('userRouter', () => {
         expect(userRepository.get).to.have.been.calledWith(userId)
         //expect(userRepository.get).to.not.been.called
       })
-
-      
-
     })
   })
-  
+
+  describe('login', () => {
+
+    let userId
+    let response
+
+    beforeEach(() => {
+      
+    })
+
+    context('when there is user matching in the repository', () => {
+
+      beforeEach(async () => {
+        // given
+        userId = '100001'
+        user = userRepository.create({
+          firstname: "D",
+          lastname: "D",
+          email: "D"
+        })
+        user = user.resolves(user)
+        console.log(user)
+        userId = user.id
+        // when
+        response = await request(app).post(`/users/login/${userId}`)
+      })
+
+      it('should return a cookie with ID id', () => {
+        // then
+        console.log(response.cookie)
+        expect(response).to.have.status(200)
+        expect(userRouter.post).to.not.been.called
+        //expect(userRepository.get).to.not.been.called
+      })
+    })
+  })
+
   describe('Delete User - DELETE', () => {
 
     let response
