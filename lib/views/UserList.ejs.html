@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1 class="title">Users</h1>
+      <% if(users.length === 0) {%>
+        No users in system yet.
+      <% } else { %>
+          <ul>
+              <% users.forEach(user => { %>
+                  <li><%= user.name %> ( <%= user.email %> )</li>
+              <% }) %>
+          </ul>
+      <% } %>
+      <a href="/users/new"><button>Create new</button></a>
+  </body>
+</html>
+ 
