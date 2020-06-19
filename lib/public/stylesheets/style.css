@@ -1,3 +1,5 @@
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -7,6 +9,10 @@ a {
   color: #00B7FF;
 }
 
+ul {
+    list-style: none;
+}
+
 .title {
   color: #00B7FF;
 }
@@ -14,3 +20,33 @@ a {
 .subtitle {
   color: #527c8d;
 }
+
+.users-info {
+    padding-left: 10px;
+}
+
+.user-info {
+    padding: 5px 0;
+}
+
+button.fa {
+    border: none;
+    padding: 5px;
+    margin-right: 5px;
+    background: #F05148;
+    transform: scale(0.7);
+}
+button.fa i {
+    text-align: center;
+    font-style: normal!important;
+    color: #444040;
+}
+
+button.fa:hover {
+    background: #F03C48;
+    cursor: pointer;
+}
+button.fa:hover i {
+    color: 
+}
+

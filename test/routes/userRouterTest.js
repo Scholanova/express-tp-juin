@@ -60,4 +60,43 @@ describe('userRouter', () => {
       
     })
 
+    describe('delete User - DELETE', () => {
+    
+      let response
+      
+      beforeEach(() => {
+        sinon.stub(userRepository, 'delete')
+      })
+      
+      context('when the user exist', () => {
+        
+        let userId
+        
+        beforeEach(async () => {
+          // given
+          userId = '213'
+          user = factory.createUser({ id: userId })
+          
+          userRepository.delete.resolves()
+          
+          // when
+          response = await request(app)
+          .delete(`/users/${userId}`)
+          .type('form')
+          .redirects(0)
+        })
+        
+        it('should call the service with book id', () => {
+          // then
+          expect(userRepository.delete).to.have.been.calledWith(userId)
+        })
+        
+        it('should succeed with a status 204', () => {
+          // then
+          expect(response).to.have.status(204)
+        })
+      })
+      
+    })
+
 })

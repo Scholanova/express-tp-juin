@@ -64,4 +64,26 @@ describe('userRepository', () => {
     })
   })
 
+  describe('delete', () => {
+
+    let user
+
+    beforeEach(async () => {
+      // given
+      id = 123
+      user = factory.createUser({id})
+
+      await user.save()
+
+      // when
+      await userRepository.delete(id)
+    })
+
+    // then
+    it('should delete a user with the right properties', () => {
+      //then
+      return expect(User.findOne({ where: { id } })).to.eventually.be.null
+    })
+  })
+
 })
