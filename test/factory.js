@@ -1,5 +1,5 @@
 const models = require('../lib/models')
-const User = models.user
+const Users = models.Users
 
 
 const factory = {
@@ -16,7 +16,7 @@ const factory = {
         lastname = 'Polo',
         email = 'jp@test.ch'
       } = {}) => {
-        return new User({ id, firstname, lastname, email })
+        return new Users({ id, firstname, lastname, email })
       },
 }
 
