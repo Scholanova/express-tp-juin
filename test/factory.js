@@ -2,7 +2,7 @@ const models = require('../lib/models')
 const User = models.User
 
 const factory = {
-	createUserData: ({
+  createUserData: ({
     name = 'User X',
     email = 'userx@gmail.fr',
     password = 'userxpassword'
