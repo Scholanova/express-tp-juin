@@ -66,7 +66,7 @@ C'est à dire qu'un cookie contenant l'id de l'utilisateur est déposé après a
 
 ## PARTIE 3 - DES PROBLÈMES D'AUTHORISATIONS
 Un utilisateur peut avoir des secrets. Un secret est un object qui appartient à un utilisateur, contient une description et un contenu. 
-La description doit être courte (moins de 100 charactères). Ni la descirption, ni le contenu du secret ne doivent être vide. 
+La description doit être courte (moins de 100 caractères). Ni la description, ni le contenu du secret ne doivent être vide. 
 
 - Étape 11 - Créez un formulaire de création de secrets (`/users/:id/secrets/new`), qui va permettre de créer des secrets
  pour un utilisateur et qui redirige vers l'index des secrets d'un utilisateur à la création. Des messages d'erreur s'affichent correctement si le formulaire est mal rempli.
@@ -78,6 +78,17 @@ que si l'on est authentifié comme l'utilsateur en question. Si il n'y a pas de 
 - Étape 14 - A chaque erreur d'autorisation, il faut que l'utilisateur soit redirigé vers la page d'acceuil et qu'un bandeau 
 "Vous n'avez pas les droits pour accéder à cette page" apparaisse. 
     
+## PARTIE 4 - LES ADMINS
+Un utilisateur peut être admin de la plateforme. C'est une propriété obligatoire d'un utilisateur. Soit il est admin, soit 
+il ne l'est pas. 
+
+- Étape 15 - Modifiez le formulaire de création d'un utilisateur pour lui rajouter la possibilité d'être un admin.
+- Étape 16 - Modifiez les pages index et show d'un utilisateur pour afficher si oui ou non il est admin. 
+- Étape 17 - Finalement seul un admin peut supprimer les autres utilisateurs. Donc il faut empêcher les autres utilisateurs 
+de pouvoir appeler la route DELETE user. Plus masquer le bouton quand ils ne sont pas admin. 
+(vérification de droit sur la route Delete + affichage des boutons seulement si l'utilisateur est connecté et est un admin)
+- Étape 18 - Un admin a le droit de voir toutes les pages, y compris les pages qui étaient précédemment interdites, comme la 
+page de détail d'un secret d'un autre utilisateur. 
 
 ## AIDE POUR LA MIGRATION DE BASE DE DONNÉES
 
